@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16-oct-2017 21:15:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="empresariales" name="cl.solemne.modelos.DetalleCombo" optimistic-lock="version" table="detalle_combo">
+    <composite-id class="cl.solemne.modelos.DetalleComboId" name="id">
+      <key-property name="id" type="int">
+        <column name="id"/>
+      </key-property>
+      <key-property name="productoId" type="int">
+        <column name="producto_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="cl.solemne.modelos.Combos" fetch="select" name="combos">
+      <column name="combos_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="cl.solemne.modelos.Producto" fetch="select" insert="false" name="producto" update="false">
+      <column name="producto_id" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

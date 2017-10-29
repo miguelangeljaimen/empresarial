@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16-oct-2017 21:15:20 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="empresariales" name="cl.solemne.modelos.OrdenCompra" optimistic-lock="version" table="orden_compra">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="cl.solemne.modelos.Proveedor" fetch="select" name="proveedor">
+      <column name="proveedor_id" not-null="true"/>
+    </many-to-one>
+    <property name="fecha" type="date">
+      <column length="10" name="fecha" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="detalleOCompras" table="detalle_o_compra">
+      <key>
+        <column name="orden_compra_id" not-null="true"/>
+      </key>
+      <one-to-many class="cl.solemne.modelos.DetalleOCompra"/>
+    </set>
+  </class>
+</hibernate-mapping>
